@@ -1,0 +1,14 @@
+list
+test
+todo testtask1
+list
+deadline deadlinetask /by uhh
+event eventtask /from uhh /to ehh
+list
+mark 2
+list
+mark 3
+list
+unmark 2
+list
+bye

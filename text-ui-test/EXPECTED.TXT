@@ -1,7 +1,75 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
-
+_________________________________
+Hello! I'm Penguin
+What can I do for you?
+_________________________________
+_________________________________
+Here are the tasks in your tasks:
+_________________________________
+_________________________________
+Invalid input. Here is a list of commands:
+list
+mark
+unmark
+todo
+deadline
+event
+bye
+_________________________________
+_________________________________
+Got it. I've added this task:
+  [T][ ] testtask1
+Now you have 1 tasks in the list!
+_________________________________
+_________________________________
+Here are the tasks in your tasks:
+1.[T][ ] testtask1
+_________________________________
+_________________________________
+Got it. I've added this task:
+  [D][ ] deadlinetask (by: uhh)
+Now you have 2 tasks in the list!
+_________________________________
+_________________________________
+Got it. I've added this task:
+  [E][ ] eventtask (from: uhh to: ehh)
+Now you have 3 tasks in the list!
+_________________________________
+_________________________________
+Here are the tasks in your tasks:
+1.[T][ ] testtask1
+2.[D][ ] deadlinetask (by: uhh)
+3.[E][ ] eventtask (from: uhh to: ehh)
+_________________________________
+_________________________________
+Nice! I've marked this task as done:
+[D][X] deadlinetask (by: uhh)
+_________________________________
+_________________________________
+Here are the tasks in your tasks:
+1.[T][ ] testtask1
+2.[D][X] deadlinetask (by: uhh)
+3.[E][ ] eventtask (from: uhh to: ehh)
+_________________________________
+_________________________________
+Nice! I've marked this task as done:
+[E][X] eventtask (from: uhh to: ehh)
+_________________________________
+_________________________________
+Here are the tasks in your tasks:
+1.[T][ ] testtask1
+2.[D][X] deadlinetask (by: uhh)
+3.[E][X] eventtask (from: uhh to: ehh)
+_________________________________
+_________________________________
+OK, I've marked this task as not done yet:
+[D][ ] deadlinetask (by: uhh)
+_________________________________
+_________________________________
+Here are the tasks in your tasks:
+1.[T][ ] testtask1
+2.[D][ ] deadlinetask (by: uhh)
+3.[E][X] eventtask (from: uhh to: ehh)
+_________________________________
+_________________________________
+Bye. Hope to see you again soon!
+_________________________________
