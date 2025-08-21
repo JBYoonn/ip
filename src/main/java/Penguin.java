@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Penguin {
@@ -11,6 +13,7 @@ public class Penguin {
         System.out.println(line);
 
         Scanner scanner = new Scanner(System.in);
+        List<String> list = new ArrayList<String>();
 
         while (true) {
             String userInput = scanner.nextLine();
@@ -22,8 +25,21 @@ public class Penguin {
                 break;
             }
 
+            if (userInput.equals("list")) {
+                System.out.println(line);
+                for (int i = 0; i < list.size(); i++) {
+                    int index = i + 1;
+                    System.out.println(index + ". " + list.get(i));
+                }
+                System.out.println(line);
+                continue;
+            }
+
+            // add user input
+            list.add(userInput);
+
             System.out.println(line);
-            System.out.println(userInput);
+            System.out.println("added: " + userInput);
             System.out.println(line);
         }
 
