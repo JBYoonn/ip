@@ -17,7 +17,7 @@ public class Penguin {
         List<Task> tasks = new ArrayList<>();
 
         while (true) {
-            String userInput = scanner.nextLine();
+            String userInput = scanner.nextLine().trim();
             try {
                 boolean exit = handle(userInput, tasks, line);
                 if (exit) {
@@ -44,7 +44,7 @@ public class Penguin {
         // check for list
         if (userInput.equals("list")) {
             System.out.println(line);
-            System.out.println("Here are the tasks in your tasks:");
+            System.out.println("Here are the task(s) in the list:");
             for (int i = 0; i < tasks.size(); i++) {
                 int index = i + 1;
                 System.out.println(index + "." + tasks.get(i).toString());
@@ -79,6 +79,27 @@ public class Penguin {
             System.out.println(line);
             System.out.println("OK, I've marked this task as not done yet:");
             System.out.println(t.markAsNotDone());
+            System.out.println(line);
+            return false;
+        }
+
+        // check for delete
+        if (userInput.startsWith("delete ")) {
+            String rest = userInput.substring(7);
+            int id;
+            try {
+                id = Integer.parseInt(rest);
+            } catch (NumberFormatException e) {
+                throw new PenguinException("Format: delete <task id>");
+            }
+            if (id < 1 || id > tasks.size()) {
+                throw new PenguinException("Task id out of range! (1..." + tasks.size() + ")");
+            }
+            Task removed = tasks.remove(id - 1);
+            System.out.println(line);
+            System.out.println("Noted. I've removed this task:");
+            System.out.println("  " + removed.toString());
+            System.out.println("Now you have " + tasks.size() + " task(s) in the list!");
             System.out.println(line);
             return false;
         }
@@ -157,7 +178,7 @@ public class Penguin {
         System.out.println(line);
         System.out.println("Got it. I've added this task:");
         System.out.println("  " + task.toString());
-        System.out.println("Now you have " + size + " tasks in the list!");
+        System.out.println("Now you have " + size + " task(s) in the list!");
         System.out.println(line);
     }
 }

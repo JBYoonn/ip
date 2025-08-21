@@ -3,7 +3,7 @@ Hello! I'm Penguin
 What can I do for you?
 _________________________________
 _________________________________
-Here are the tasks in your tasks:
+Here are the task(s) in the list:
 _________________________________
 _________________________________
 OH NO!! I don't know what that means :( Here is a list of commands:
@@ -18,24 +18,24 @@ _________________________________
 _________________________________
 Got it. I've added this task:
   [T][ ] testtask1
-Now you have 1 tasks in the list!
+Now you have 1 task(s) in the list!
 _________________________________
 _________________________________
-Here are the tasks in your tasks:
+Here are the task(s) in the list:
 1.[T][ ] testtask1
 _________________________________
 _________________________________
 Got it. I've added this task:
   [D][ ] deadlinetask (by: uhh)
-Now you have 2 tasks in the list!
+Now you have 2 task(s) in the list!
 _________________________________
 _________________________________
 Got it. I've added this task:
   [E][ ] eventtask (from: uhh to: ehh)
-Now you have 3 tasks in the list!
+Now you have 3 task(s) in the list!
 _________________________________
 _________________________________
-Here are the tasks in your tasks:
+Here are the task(s) in the list:
 1.[T][ ] testtask1
 2.[D][ ] deadlinetask (by: uhh)
 3.[E][ ] eventtask (from: uhh to: ehh)
@@ -45,7 +45,7 @@ Nice! I've marked this task as done:
 [D][X] deadlinetask (by: uhh)
 _________________________________
 _________________________________
-Here are the tasks in your tasks:
+Here are the task(s) in the list:
 1.[T][ ] testtask1
 2.[D][X] deadlinetask (by: uhh)
 3.[E][ ] eventtask (from: uhh to: ehh)
@@ -55,7 +55,7 @@ Nice! I've marked this task as done:
 [E][X] eventtask (from: uhh to: ehh)
 _________________________________
 _________________________________
-Here are the tasks in your tasks:
+Here are the task(s) in the list:
 1.[T][ ] testtask1
 2.[D][X] deadlinetask (by: uhh)
 3.[E][X] eventtask (from: uhh to: ehh)
@@ -65,13 +65,23 @@ OK, I've marked this task as not done yet:
 [D][ ] deadlinetask (by: uhh)
 _________________________________
 _________________________________
-Here are the tasks in your tasks:
+Here are the task(s) in the list:
 1.[T][ ] testtask1
 2.[D][ ] deadlinetask (by: uhh)
 3.[E][X] eventtask (from: uhh to: ehh)
 _________________________________
 _________________________________
 OH NO!! Description cannot be empty!!!
+_________________________________
+_________________________________
+Noted. I've removed this task:
+  [T][ ] testtask1
+Now you have 2 task(s) in the list!
+_________________________________
+_________________________________
+Here are the task(s) in the list:
+1.[D][ ] deadlinetask (by: uhh)
+2.[E][X] eventtask (from: uhh to: ehh)
 _________________________________
 _________________________________
 Bye. Hope to see you again soon!
