@@ -6,7 +6,7 @@ _________________________________
 Here are the tasks in your tasks:
 _________________________________
 _________________________________
-Invalid input. Here is a list of commands:
+OH NO!! I don't know what that means :( Here is a list of commands:
 list
 mark
 unmark
@@ -69,6 +69,9 @@ Here are the tasks in your tasks:
 1.[T][ ] testtask1
 2.[D][ ] deadlinetask (by: uhh)
 3.[E][X] eventtask (from: uhh to: ehh)
+_________________________________
+_________________________________
+OH NO!! Description cannot be empty!!!
 _________________________________
 _________________________________
 Bye. Hope to see you again soon!
