@@ -1,7 +1,9 @@
+import java.io.IOException;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 
 public class Penguin {
     public static void main(String[] args) {
@@ -14,12 +16,19 @@ public class Penguin {
         System.out.println(line);
 
         Scanner scanner = new Scanner(System.in);
-        List<Task> tasks = new ArrayList<>();
+        Save save = new Save("data", "penguin.txt");
+        List<Task> tasks;
+
+        try {
+            tasks = save.load();
+        } catch (IOException e) {
+            tasks = new ArrayList<>();
+        }
 
         while (true) {
             String userInput = scanner.nextLine().trim();
             try {
-                boolean exit = handle(userInput, tasks, line);
+                boolean exit = handle(userInput, tasks, line, save);
                 if (exit) {
                     break;
                 }
@@ -32,7 +41,7 @@ public class Penguin {
         scanner.close();
     }
 
-    private static boolean handle(String userInput, List<Task> tasks, String line) throws PenguinException {
+    private static boolean handle(String userInput, List<Task> tasks, String line, Save save) throws PenguinException {
         Command cmd = Command.of(userInput);
 
         switch (cmd) {
@@ -63,6 +72,14 @@ public class Penguin {
                 System.out.println("Nice! I've marked this task as done:");
                 System.out.println(t.markAsDone());
                 System.out.println(line);
+
+                try {
+                    save.save(tasks);
+                } catch (IOException e) {
+                    // should not happen, unless user deletes file mid run
+                    return false;
+                }
+
                 return false;
             }
             case UNMARK -> {
@@ -76,6 +93,14 @@ public class Penguin {
                 System.out.println("OK, I've marked this task as not done yet:");
                 System.out.println(t.markAsNotDone());
                 System.out.println(line);
+
+                try {
+                    save.save(tasks);
+                } catch (IOException e) {
+                    // should not happen, unless file deleted mid run
+                    return false;
+                }
+
                 return false;
             }
             case DELETE -> {
@@ -95,6 +120,14 @@ public class Penguin {
                 System.out.println("  " + removed.toString());
                 System.out.println("Now you have " + tasks.size() + " task(s) in the list!");
                 System.out.println(line);
+
+                try {
+                    save.save(tasks);
+                } catch (IOException e) {
+                    // should not happen, unless file deleted mid run
+                    return false;
+                }
+
                 return false;
             }
             case DEADLINE -> {
@@ -107,6 +140,14 @@ public class Penguin {
                 Task t = new Deadline(parts[0], parts[1]);
                 tasks.add(t);
                 printAdded(line, t, tasks.size());
+
+                try {
+                    save.save(tasks);
+                } catch (IOException e) {
+                    // should not happen, unless file deleted mid run
+                    return false;
+                }
+
                 return false;
             }
             case EVENT -> {
@@ -123,6 +164,14 @@ public class Penguin {
                 Task t = new Event(partsFrom[0], partsTo[0], partsTo[1]);
                 tasks.add(t);
                 printAdded(line, t, tasks.size());
+
+                try {
+                    save.save(tasks);
+                } catch (IOException e) {
+                    // should not happen, unless file deleted mid run
+                    return false;
+                }
+
                 return false;
             }
             case TODO -> {
@@ -133,6 +182,14 @@ public class Penguin {
                 Task t = new Todo(body);
                 tasks.add(t);
                 printAdded(line, t, tasks.size());
+
+                try {
+                    save.save(tasks);
+                } catch (IOException e) {
+                    // should not happen, unless file deleted mid run
+                    return false;
+                }
+
                 return false;
             }
             default -> {
