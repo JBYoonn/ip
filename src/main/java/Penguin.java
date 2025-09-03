@@ -58,6 +58,9 @@ public class Penguin {
                     int index = i + 1;
                     System.out.println(index + "." + tasks.get(i).toString());
                 }
+                if (tasks.isEmpty()) {
+                    System.out.println("There is nothing here!");
+                }
                 System.out.println(line);
                 return false;
             }
@@ -196,15 +199,9 @@ public class Penguin {
                 if (userInput.equals("todo") || userInput.equals("event") || userInput.equals("deadline")) {
                     throw new PenguinException("Description cannot be empty!!!");
                 } else {
-                    throw new PenguinException("""
-                    I don't know what that means :( Here is a list of commands:
-                    list
-                    mark
-                    unmark
-                    todo
-                    deadline
-                    event
-                    bye""");
+                    throw new PenguinException(
+                            "I don't know what that means :( " + Command.getAllCommands()
+                    );
                 }
             }
         }
