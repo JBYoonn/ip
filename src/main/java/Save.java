@@ -4,6 +4,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -132,7 +133,8 @@ public class Save {
                 if (p.length != 4) {
                     throw new CorruptedLineException("Deadline needs 4 fields!");
                 }
-                Deadline d = new Deadline(p[2], p[3]);
+                LocalDate deadlineDate = LocalDate.parse(p[3]);
+                Deadline d = new Deadline(p[2], deadlineDate);
                 if (done) {
                     d.markAsDone();
                 }

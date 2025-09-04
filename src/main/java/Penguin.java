@@ -1,5 +1,7 @@
 import java.io.IOException;
 import java.sql.SQLOutput;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -136,11 +138,17 @@ public class Penguin {
             case DEADLINE -> {
                 String body = userInput.substring(9);
                 String[] parts = body.split("\\s*/by\\s*", 2);
+                LocalDate date;
                 // check if valid
                 if (parts.length != 2 || parts[0].isBlank() || parts[1].isBlank()) {
-                    throw new PenguinException("Format: deadline <description> /by <when>");
+                    throw new PenguinException("Format: deadline <description> /by <yyyy-mm-dd>");
                 }
-                Task t = new Deadline(parts[0], parts[1]);
+                try {
+                    date = LocalDate.parse(parts[1]);
+                } catch (DateTimeParseException e) {
+                    throw new PenguinException("Invalid date! Format: deadline <description> /by <yyyy-mm-dd>");
+                }
+                Task t = new Deadline(parts[0], date);
                 tasks.add(t);
                 printAdded(line, t, tasks.size());
 
