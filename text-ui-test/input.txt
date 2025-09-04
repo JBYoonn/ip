@@ -2,7 +2,7 @@ list
 test
 todo testtask1
 list
-deadline deadlinetask /by uhh
+deadline deadlinetask /by 2025-10-01
 event eventtask /from uhh /to ehh
 list
 mark 2

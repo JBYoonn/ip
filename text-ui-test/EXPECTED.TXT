@@ -28,7 +28,7 @@ Here are the task(s) in the list:
 _________________________________
 _________________________________
 Got it. I've added this task:
-  [D][ ] deadlinetask (by: uhh)
+  [D][ ] deadlinetask (by: Oct 1 2025)
 Now you have 2 task(s) in the list!
 _________________________________
 _________________________________
@@ -39,17 +39,17 @@ _________________________________
 _________________________________
 Here are the task(s) in the list:
 1.[T][ ] testtask1
-2.[D][ ] deadlinetask (by: uhh)
+2.[D][ ] deadlinetask (by: Oct 1 2025)
 3.[E][ ] eventtask (from: uhh to: ehh)
 _________________________________
 _________________________________
 Nice! I've marked this task as done:
-[D][X] deadlinetask (by: uhh)
+[D][X] deadlinetask (by: Oct 1 2025)
 _________________________________
 _________________________________
 Here are the task(s) in the list:
 1.[T][ ] testtask1
-2.[D][X] deadlinetask (by: uhh)
+2.[D][X] deadlinetask (by: Oct 1 2025)
 3.[E][ ] eventtask (from: uhh to: ehh)
 _________________________________
 _________________________________
@@ -59,17 +59,17 @@ _________________________________
 _________________________________
 Here are the task(s) in the list:
 1.[T][ ] testtask1
-2.[D][X] deadlinetask (by: uhh)
+2.[D][X] deadlinetask (by: Oct 1 2025)
 3.[E][X] eventtask (from: uhh to: ehh)
 _________________________________
 _________________________________
 OK, I've marked this task as not done yet:
-[D][ ] deadlinetask (by: uhh)
+[D][ ] deadlinetask (by: Oct 1 2025)
 _________________________________
 _________________________________
 Here are the task(s) in the list:
 1.[T][ ] testtask1
-2.[D][ ] deadlinetask (by: uhh)
+2.[D][ ] deadlinetask (by: Oct 1 2025)
 3.[E][X] eventtask (from: uhh to: ehh)
 _________________________________
 _________________________________
@@ -82,12 +82,12 @@ Now you have 2 task(s) in the list!
 _________________________________
 _________________________________
 Here are the task(s) in the list:
-1.[D][ ] deadlinetask (by: uhh)
+1.[D][ ] deadlinetask (by: Oct 1 2025)
 2.[E][X] eventtask (from: uhh to: ehh)
 _________________________________
 _________________________________
 Noted. I've removed this task:
-  [D][ ] deadlinetask (by: uhh)
+  [D][ ] deadlinetask (by: Oct 1 2025)
 Now you have 1 task(s) in the list!
 _________________________________
 _________________________________
