@@ -1,5 +1,4 @@
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -18,11 +17,11 @@ public class Penguin {
         System.out.println(line);
 
         Scanner scanner = new Scanner(System.in);
-        Save save = new Save("data", "penguin.txt");
+        Storage storage = new Storage("data", "penguin.txt");
         List<Task> tasks;
 
         try {
-            tasks = save.load();
+            tasks = storage.load();
         } catch (IOException e) {
             tasks = new ArrayList<>();
         }
@@ -30,7 +29,7 @@ public class Penguin {
         while (true) {
             String userInput = scanner.nextLine().trim();
             try {
-                boolean exit = handle(userInput, tasks, line, save);
+                boolean exit = handle(userInput, tasks, line, storage);
                 if (exit) {
                     break;
                 }
@@ -43,7 +42,7 @@ public class Penguin {
         scanner.close();
     }
 
-    private static boolean handle(String userInput, List<Task> tasks, String line, Save save) throws PenguinException {
+    private static boolean handle(String userInput, List<Task> tasks, String line, Storage storage) throws PenguinException {
         Command cmd = Command.of(userInput);
 
         switch (cmd) {
@@ -79,7 +78,7 @@ public class Penguin {
                 System.out.println(line);
 
                 try {
-                    save.save(tasks);
+                    storage.save(tasks);
                 } catch (IOException e) {
                     // should not happen, unless user deletes file mid run
                     return false;
@@ -100,7 +99,7 @@ public class Penguin {
                 System.out.println(line);
 
                 try {
-                    save.save(tasks);
+                    storage.save(tasks);
                 } catch (IOException e) {
                     // should not happen, unless file deleted mid run
                     return false;
@@ -127,7 +126,7 @@ public class Penguin {
                 System.out.println(line);
 
                 try {
-                    save.save(tasks);
+                    storage.save(tasks);
                 } catch (IOException e) {
                     // should not happen, unless file deleted mid run
                     return false;
@@ -153,7 +152,7 @@ public class Penguin {
                 printAdded(line, t, tasks.size());
 
                 try {
-                    save.save(tasks);
+                    storage.save(tasks);
                 } catch (IOException e) {
                     // should not happen, unless file deleted mid run
                     return false;
@@ -177,7 +176,7 @@ public class Penguin {
                 printAdded(line, t, tasks.size());
 
                 try {
-                    save.save(tasks);
+                    storage.save(tasks);
                 } catch (IOException e) {
                     // should not happen, unless file deleted mid run
                     return false;
@@ -195,7 +194,7 @@ public class Penguin {
                 printAdded(line, t, tasks.size());
 
                 try {
-                    save.save(tasks);
+                    storage.save(tasks);
                 } catch (IOException e) {
                     // should not happen, unless file deleted mid run
                     return false;

@@ -8,11 +8,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Save {
+public class Storage {
     private final Path dir;
     private final Path file;
 
-    public Save(String directory, String fileName) {
+    public Storage(String directory, String fileName) {
         this.dir = Paths.get(directory);
         this.file = dir.resolve(fileName);
     }
@@ -51,9 +51,6 @@ public class Save {
             lines.add(encode(t));
         }
 
-        if (Files.notExists(dir)) {
-            Files.createDirectories(dir);
-        }
         Files.write(
                 file,
                 lines,
@@ -151,7 +148,7 @@ public class Save {
                 return e;
             }
             default -> {
-                throw new CorruptedLineException("unknown type: " + type);
+                    throw new CorruptedLineException("unknown type: " + type);
             }
         }
     }
