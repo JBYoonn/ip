@@ -1,3 +1,5 @@
+package penguin;
+
 public class ListCommand extends Command {
     public ListCommand(String input) {
         super(input);

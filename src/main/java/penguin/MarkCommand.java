@@ -1,21 +1,24 @@
+package penguin;
+
 import java.io.IOException;
 
-public class UnmarkCommand extends Command {
-    public UnmarkCommand(String input) {
+public class MarkCommand extends Command {
+    public MarkCommand(String input) {
         super(input);
     }
 
     @Override
     public boolean execute(TaskList tasks, Ui ui, Storage storage) throws PenguinException {
-        int id = Parser.parseIndex(input, 7);
+        int id = Parser.parseIndex(input, 5); // after "mark "
         if (!tasks.isValidIndex(id)) {
+            ui.showBadId();
             return false;
         }
 
-        // get task, unmark it and print message
+        // get task, mark it and print message
         Task t = tasks.get(id - 1);
-        t.markAsNotDone();
-        ui.showUnmarked(t);
+        t.markAsDone();
+        ui.showMarked(t);
 
         try {
             storage.save(tasks.getTasks());

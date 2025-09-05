@@ -1,13 +1,15 @@
+package penguin;
+
 import java.io.IOException;
 
-public class TodoCommand extends Command {
-    public TodoCommand(String input) {
+public class DeadlineCommand extends Command {
+    public DeadlineCommand(String input) {
         super(input);
     }
 
     @Override
     public boolean execute(TaskList tasks, Ui ui, Storage storage) throws PenguinException {
-        Task t = Parser.parseTodo(input);
+        Task t = Parser.parseDeadline(input);
         tasks.add(t);
         ui.showAddedTask(t, tasks.size());
 

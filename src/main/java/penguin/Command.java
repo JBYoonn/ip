@@ -1,3 +1,5 @@
+package penguin;
+
 public abstract class Command {
     protected final String input;
 

@@ -1,27 +1,27 @@
+package penguin;
+
 import java.io.IOException;
 
-public class MarkCommand extends Command {
-    public MarkCommand(String input) {
+public class DeleteCommand extends Command {
+    public DeleteCommand(String input) {
         super(input);
     }
 
     @Override
     public boolean execute(TaskList tasks, Ui ui, Storage storage) throws PenguinException {
-        int id = Parser.parseIndex(input, 5); // after "mark "
+        int id = Parser.parseIndex(input, 7);
         if (!tasks.isValidIndex(id)) {
             ui.showBadId();
             return false;
         }
 
-        // get task, mark it and print message
-        Task t = tasks.get(id - 1);
-        t.markAsDone();
-        ui.showMarked(t);
+        Task removed = tasks.removeAt(id - 1);
+        ui.showRemovedTask(removed, tasks.size());
 
         try {
             storage.save(tasks.getTasks());
         } catch (IOException e) {
-            // file removed mid-run
+            // user might have deleted file mid-run
         }
 
         return false;
