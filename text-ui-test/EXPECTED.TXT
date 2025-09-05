@@ -7,7 +7,7 @@ Here are the task(s) in the list:
 There is nothing here!
 _________________________________
 _________________________________
-OH NO!! I don't know what that means :( Here are the available commands: 
+OH NO!! I don't know what that means :( Here are the available commands:
 bye
 list
 mark
@@ -104,5 +104,5 @@ Here are the task(s) in the list:
 There is nothing here!
 _________________________________
 _________________________________
-Bye. Hope to see you again soon!
+Good bye. Hope to see you again soon!
 _________________________________
