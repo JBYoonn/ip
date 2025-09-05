@@ -1,4 +1,11 @@
-package PACKAGE_NAME;
+public class ByeCommand extends Command {
+    public ByeCommand(String input) {
+        super(input);
+    }
 
-public class ByeCommand {
+    @Override
+    public boolean execute(TaskList tasks, Ui ui, Storage storage) throws PenguinException {
+        ui.showGoodBye();
+        return true; // exit
+    }
 }
