@@ -1,4 +1,22 @@
-package PACKAGE_NAME;
+import java.io.IOException;
 
-public class DeadlineCommand {
+public class DeadlineCommand extends Command {
+    public DeadlineCommand(String input) {
+        super(input);
+    }
+
+    @Override
+    public boolean execute(TaskList tasks, Ui ui, Storage storage) throws PenguinException {
+        Task t = Parser.parseDeadline(input);
+        tasks.add(t);
+        ui.showAddedTask(t, tasks.size());
+
+        try {
+            storage.save(tasks.getTasks());
+        } catch (IOException e) {
+            // user might have deleted file mid-run
+        }
+
+        return false;
+    }
 }
