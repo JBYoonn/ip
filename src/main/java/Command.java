@@ -1,57 +1,18 @@
-public enum Command {
-    BYE("bye"),
-    LIST("list"),
-    MARK("mark "),
-    UNMARK("unmark "),
-    DELETE("delete "),
-    TODO("todo "),
-    DEADLINE("deadline "),
-    EVENT("event "),
-    UNKNOWN("");
+public abstract class Command {
+    protected final String input;
 
-    private final String key;
-
-    Command(String key) {
-        this.key = key;
+    public Command(String input) {
+        this.input = input;
     }
 
-    public static Command of(String input) {
-        String s = input.toLowerCase();
-        if (s.equals("bye")) {
-            return BYE;
-        }
-        if (s.equals("list")) {
-            return LIST;
-        }
-        if (s.startsWith("mark ")) {
-            return MARK;
-        }
-        if (s.startsWith("unmark ")) {
-            return UNMARK;
-        }
-        if (s.startsWith("delete ")) {
-            return DELETE;
-        }
-        if (s.startsWith("todo ")) {
-            return TODO;
-        }
-        if (s.startsWith("deadline ")) {
-            return DEADLINE;
-        }
-        if (s.startsWith("event ")) {
-            return EVENT;
-        }
-        return UNKNOWN;
-    }
-
-    public static String getAllCommands() {
-        StringBuilder sb = new StringBuilder("Here are the available commands: ");
-        for (Command command : Command.values()) {
-            if (command != UNKNOWN) {
-                sb.append("\n");
-                sb.append(command.key.trim());
-            }
-        }
-        return sb.toString();
-    }
+    public abstract boolean execute(TaskList tasks, Ui ui, Storage storage) throws PenguinException;
+//    BYE("bye"),
+//    LIST("list"),
+//    MARK("mark "),
+//    UNMARK("unmark "),
+//    DELETE("delete "),
+//    TODO("todo "),
+//    DEADLINE("deadline "),
+//    EVENT("event "),
+//    UNKNOWN("");
 }
