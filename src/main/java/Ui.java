@@ -1,20 +1,24 @@
 import java.util.List;
 
 public class Ui {
-    private final String line = "_________________________________";
+    private final String LINE = "_________________________________";
 
     public void showLine() {
-        System.out.println(line);
+        System.out.println(LINE);
     }
 
-    public void greet(String name) {
+    public void showMessage(String message) {
+        System.out.println(message);
+    }
+
+    public void showGreeting(String name) {
         showLine();
         System.out.println("Hello! I'm " + name);
         System.out.println("What can I do for you?");
         showLine();
     }
 
-    public void bye() {
+    public void showGoodBye() {
         showLine();
         System.out.println("Good bye. Hope to see you again soon!");
         showLine();
@@ -34,7 +38,8 @@ public class Ui {
         showLine();
     }
 
-    public void showTasks(List<Task> tasks) {
+    public void showTasks(TaskList taskList) {
+        List<Task> tasks = taskList.getTasks();
         showLine();
         System.out.println("Here are the task(s) in the list:");
         for (int i = 0; i < tasks.size(); i++) {
