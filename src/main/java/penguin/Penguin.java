@@ -9,11 +9,16 @@ import java.util.Scanner;
  * Main entry point of the application.
  */
 public class Penguin {
-    private final String NAME = "Penguin";
+    private static final String NAME = "Penguin";
     private final Ui ui;
     private final Storage storage;
     private final TaskList taskList;
 
+    /**
+     * Initialises the chatbot and loads in saved tasks from the disk.
+     * @param directory Directory of saved file
+     * @param fileName Name of save file
+     */
     public Penguin(String directory, String fileName) {
         this.ui = new Ui();
         this.storage = new Storage(directory, fileName);
@@ -32,7 +37,7 @@ public class Penguin {
      * Starts the interaction between user and chatbot until the user exits.
      */
     public void run() {
-        ui.showGreeting(this.NAME);
+        ui.showGreeting(NAME);
 
         try (Scanner scanner = new Scanner(System.in)) {
             while (true) {

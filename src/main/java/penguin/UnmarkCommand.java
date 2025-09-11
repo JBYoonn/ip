@@ -2,6 +2,9 @@ package penguin;
 
 import java.io.IOException;
 
+/**
+ * Command to unmark a specified task in the tasklist.
+ */
 public class UnmarkCommand extends Command {
     public UnmarkCommand(String input) {
         super(input);

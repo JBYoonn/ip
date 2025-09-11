@@ -2,6 +2,9 @@ package penguin;
 
 import java.io.IOException;
 
+/**
+ * Command to create a Todo task and add it to the tasklist.
+ */
 public class TodoCommand extends Command {
     public TodoCommand(String input) {
         super(input);

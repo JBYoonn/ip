@@ -7,6 +7,12 @@ public class Event extends Task {
     protected String from;
     protected String to;
 
+    /**
+     * Create an Event task with a description and specified duration.
+     * @param description Description of task
+     * @param from Start of event
+     * @param to End of event
+     */
     public Event(String description, String from, String to) {
         super(description);
         this.from = from;

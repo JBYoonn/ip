@@ -1,5 +1,8 @@
 package penguin;
 
+/**
+ * Command a show a list of current tasks.
+ */
 public class ListCommand extends Command {
     public ListCommand(String input) {
         super(input);

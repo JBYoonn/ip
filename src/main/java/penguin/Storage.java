@@ -18,6 +18,11 @@ public class Storage {
     private final Path dir;
     private final Path file;
 
+    /**
+     * Initialises storage with a directory and fileName of the save file.
+     * @param directory Directory of save file
+     * @param fileName Name of save file
+     */
     public Storage(String directory, String fileName) {
         this.dir = Paths.get(directory);
         this.file = dir.resolve(fileName);
@@ -26,6 +31,7 @@ public class Storage {
     /**
      * Loads tasks from save file.
      * Returns an empty list if the file does not exist.
+     *
      * @return List of tasks saved
      */
     public List<Task> load() throws IOException {
@@ -130,40 +136,40 @@ public class Storage {
         }
 
         switch (type) {
-            case "T" -> {
-                if (p.length != 3) {
-                    throw new CorruptedLineException("Todo needs 3 fields!");
-                }
-                Todo t = new Todo(p[2]);
-                if (done) {
-                    t.markAsDone();
-                }
-                return t;
+        case "T" -> {
+            if (p.length != 3) {
+                throw new CorruptedLineException("Todo needs 3 fields!");
             }
-            case "D" -> {
-                if (p.length != 4) {
-                    throw new CorruptedLineException("Deadline needs 4 fields!");
-                }
-                LocalDate deadlineDate = LocalDate.parse(p[3]);
-                Deadline d = new Deadline(p[2], deadlineDate);
-                if (done) {
-                    d.markAsDone();
-                }
-                return d;
+            Todo t = new Todo(p[2]);
+            if (done) {
+                t.markAsDone();
             }
-            case "E" -> {
-                if (p.length != 5) {
-                    throw new CorruptedLineException("Event needs 5 fields!");
-                }
-                Event e = new Event(p[2], p[3], p[4]);
-                if (done) {
-                    e.markAsDone();
-                }
-                return e;
+            return t;
+        }
+        case "D" -> {
+            if (p.length != 4) {
+                throw new CorruptedLineException("Deadline needs 4 fields!");
             }
-            default -> {
-                    throw new CorruptedLineException("unknown type: " + type);
+            LocalDate deadlineDate = LocalDate.parse(p[3]);
+            Deadline d = new Deadline(p[2], deadlineDate);
+            if (done) {
+                d.markAsDone();
             }
+            return d;
+        }
+        case "E" -> {
+            if (p.length != 5) {
+                throw new CorruptedLineException("Event needs 5 fields!");
+            }
+            Event e = new Event(p[2], p[3], p[4]);
+            if (done) {
+                e.markAsDone();
+            }
+            return e;
+        }
+        default -> {
+            throw new CorruptedLineException("unknown type: " + type);
+        }
         }
     }
 }

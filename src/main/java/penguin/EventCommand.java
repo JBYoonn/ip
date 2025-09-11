@@ -2,6 +2,9 @@ package penguin;
 
 import java.io.IOException;
 
+/**
+ * Command to create and add an Event task to tasklist.
+ */
 public class EventCommand extends Command {
     public EventCommand(String input) {
         super(input);

@@ -3,6 +3,9 @@ package penguin;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Command to search for matching description of tasks with a given string.
+ */
 public class FindCommand extends Command {
     public FindCommand(String input) {
         super(input);

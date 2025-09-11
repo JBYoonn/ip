@@ -2,6 +2,9 @@ package penguin;
 
 import java.io.IOException;
 
+/**
+ * Command to create and add a Deadline task to tasklist.
+ */
 public class DeadlineCommand extends Command {
     public DeadlineCommand(String input) {
         super(input);

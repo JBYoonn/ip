@@ -1,5 +1,8 @@
 package penguin;
 
+/**
+ * Command to end session with the chatbot.
+ */
 public class ByeCommand extends Command {
     public ByeCommand(String input) {
         super(input);

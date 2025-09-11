@@ -1,5 +1,8 @@
 package penguin;
 
+/**
+ * Abstract Command class to define what a command is.
+ */
 public abstract class Command {
     protected final String input;
 
