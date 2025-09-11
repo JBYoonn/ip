@@ -56,6 +56,20 @@ public class Ui {
         showLine();
     }
 
+    public void showMatches(List<Task> matches, List<Integer> indices) {
+        showLine();
+        System.out.println("Here are matching tasks in your list:");
+
+        if (matches.isEmpty()) {
+            System.out.println("There is nothing here!");
+        } else {
+            for (int i = 0; i < matches.size(); i++) {
+                System.out.println(indices.get(i) + "." + matches.get(i));
+            }
+        }
+        showLine();
+    }
+
     public void showRemovedTask(Task t, int remaining) {
         showLine();
         System.out.println("Noted. I've removed this task:");

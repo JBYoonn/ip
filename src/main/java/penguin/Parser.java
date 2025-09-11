@@ -21,6 +21,7 @@ public class Parser {
         COMMANDS.put("todo", TodoCommand::new);
         COMMANDS.put("deadline", DeadlineCommand::new);
         COMMANDS.put("event", EventCommand::new);
+        COMMANDS.put("find", FindCommand::new);
     }
 
     /**
