@@ -2,6 +2,9 @@ package penguin;
 
 import java.io.IOException;
 
+/**
+ * Command to mark a specified task in the tasklist.
+ */
 public class MarkCommand extends Command {
     public MarkCommand(String input) {
         super(input);

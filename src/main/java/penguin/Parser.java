@@ -87,7 +87,7 @@ public class Parser {
      * @param input Raw input
      * @return A Task representing the parsed {@link Deadline}
      * @throws PenguinException If the description or date is missing/blank,
-     * or if the date is not a valid ISO {@code yyyy-MM-dd} value
+     *     or if the date is not a valid ISO {@code yyyy-MM-dd} value
      */
     public static Task parseDeadline(String input) throws PenguinException {
         String body = input.length() >= 9 ? input.substring(9).trim() : "";

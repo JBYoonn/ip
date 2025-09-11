@@ -2,6 +2,9 @@ package penguin;
 
 import java.io.IOException;
 
+/**
+ * Command to delete a specified task from tasklist.
+ */
 public class DeleteCommand extends Command {
     public DeleteCommand(String input) {
         super(input);
