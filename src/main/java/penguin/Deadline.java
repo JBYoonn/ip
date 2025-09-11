@@ -3,6 +3,9 @@ package penguin;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * A tasks with a specified deadline.
+ */
 public class Deadline extends Task {
     protected LocalDate by;
 

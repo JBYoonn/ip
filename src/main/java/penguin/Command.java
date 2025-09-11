@@ -8,13 +8,4 @@ public abstract class Command {
     }
 
     public abstract boolean execute(TaskList tasks, Ui ui, Storage storage) throws PenguinException;
-//    BYE("bye"),
-//    LIST("list"),
-//    MARK("mark "),
-//    UNMARK("unmark "),
-//    DELETE("delete "),
-//    TODO("todo "),
-//    DEADLINE("deadline "),
-//    EVENT("event "),
-//    UNKNOWN("");
 }

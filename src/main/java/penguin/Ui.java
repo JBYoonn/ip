@@ -2,6 +2,9 @@ package penguin;
 
 import java.util.List;
 
+/**
+ * Handles the output of the chatbot.
+ */
 public class Ui {
     private final String LINE = "_________________________________";
 

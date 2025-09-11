@@ -10,6 +10,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Handles the encoding/decoding of tasklist in {@code ./data/<fileName>} on startup.
+ * Creates {@code data/} directory and file if it is missing.
+ */
 public class Storage {
     private final Path dir;
     private final Path file;
@@ -19,6 +23,11 @@ public class Storage {
         this.file = dir.resolve(fileName);
     }
 
+    /**
+     * Loads tasks from save file.
+     * Returns an empty list if the file does not exist.
+     * @return List of tasks saved
+     */
     public List<Task> load() throws IOException {
         if (Files.notExists(file)) {
             if (Files.notExists(dir)) {
@@ -46,6 +55,9 @@ public class Storage {
         return tasks;
     }
 
+    /**
+     * Overwrites save file with the given list of tasks.
+     */
     public void save(List<Task> tasks) throws IOException {
         List<String> lines = new ArrayList<>();
 

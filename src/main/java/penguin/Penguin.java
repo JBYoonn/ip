@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
+/**
+ * Main entry point of the application.
+ */
 public class Penguin {
     private final String NAME = "Penguin";
     private final Ui ui;
@@ -26,6 +28,9 @@ public class Penguin {
         this.taskList = new TaskList(loaded);
     }
 
+    /**
+     * Starts the interaction between user and chatbot until the user exits.
+     */
     public void run() {
         ui.showGreeting(this.NAME);
 

@@ -6,6 +6,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+/**
+ * Parses user input into it's respective {@code Command}
+ */
 public class Parser {
     private static final Map<String, Function<String, Command>> COMMANDS = new LinkedHashMap<>();
 
@@ -20,6 +23,12 @@ public class Parser {
         COMMANDS.put("event", EventCommand::new);
     }
 
+    /**
+     * Parses an input string.
+     * @param input Raw user input
+     * @return Command respective to input
+     * @throws PenguinException If input is not recognised
+     */
     public static Command parse(String input) throws PenguinException {
         String lower = input.toLowerCase();
         for (String key : COMMANDS.keySet()) {
@@ -30,6 +39,13 @@ public class Parser {
         throw new PenguinException("I don't know what that means :( " + getAllCommands());
     }
 
+    /**
+     * Parses an input string to a number.
+     * @param input Raw input
+     * @param prefixLength Length of substring
+     * @return Respective integer
+     * @throws PenguinException If unable to parse the substring
+     */
     public static int parseIndex(String input, int prefixLength) throws PenguinException {
         String rest = input.substring(prefixLength).trim();
         try {
@@ -39,6 +55,10 @@ public class Parser {
         }
     }
 
+    /**
+     * Returns a string containing all the commands neatly formatted.
+     * @return String containing all commands
+     */
     public static String getAllCommands() {
         StringBuilder sb = new StringBuilder("Here are the available commands:");
         for (String key : COMMANDS.keySet()) {
@@ -47,6 +67,12 @@ public class Parser {
         return sb.toString();
     }
 
+    /**
+     * Parses a input string into a {@link Todo} task.
+     * @param input Raw input
+     * @return A Task representing the parsed {@link Todo}
+     * @throws PenguinException If the description is missing or blank
+     */
     public static Task parseTodo(String input) throws PenguinException {
         String body = input.length() >= 5 ? input.substring(5).trim() : "";
         if (body.isEmpty()) {
@@ -55,6 +81,13 @@ public class Parser {
         return new Todo(body);
     }
 
+    /**
+     * Parses a input string into a {@link Deadline} task.
+     * @param input Raw input
+     * @return A Task representing the parsed {@link Deadline}
+     * @throws PenguinException If the description or date is missing/blank,
+     * or if the date is not a valid ISO {@code yyyy-MM-dd} value
+     */
     public static Task parseDeadline(String input) throws PenguinException {
         String body = input.length() >= 9 ? input.substring(9).trim() : "";
         String[] parts = body.split("\\s*/by\\s*", 2);
@@ -71,6 +104,12 @@ public class Parser {
         }
     }
 
+    /**
+     * Parses a input string into a {@link Event} task.
+     * @param input Raw input
+     * @return A Task representing the parsed {@link Event}
+     * @throws PenguinException If the description or duration is missing/blank
+     */
     public static Task parseEvent(String input) throws PenguinException {
         String body = input.length() >= 6 ? input.substring(6).trim() : "";
 

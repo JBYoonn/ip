@@ -1,5 +1,8 @@
 package penguin;
 
+/**
+ * A task with a specified duration.
+ */
 public class Event extends Task {
     protected String from;
     protected String to;
