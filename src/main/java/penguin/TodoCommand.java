@@ -16,7 +16,7 @@ public class TodoCommand extends Command {
 
         // AI assistance: Chat-GPT improved duplicate handling
         if (!tasks.addIfAbsent(t)) {
-            ui.say("This task is already present in the list.");
+            ui.say("Chill. You can only do the same task once.");
             return false;
         }
 

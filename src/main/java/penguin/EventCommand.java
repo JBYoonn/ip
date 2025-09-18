@@ -15,7 +15,7 @@ public class EventCommand extends Command {
         Task t = Parser.parseEvent(input);
 
         if (!tasks.addIfAbsent(t)) {
-            ui.say("This task is already present in the list.");
+            ui.say("You must be excited for this event to want to include it in the tasklist twice.");
             return false;
         }
 

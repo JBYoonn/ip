@@ -32,14 +32,14 @@ public class Ui {
      */
     public void showGreeting(String name) {
         say("Hello! I'm " + name);
-        say("What can I do for you?");
+        say("What are we cooking today?");
     }
 
     /**
      * Adds goodbye message to buffer.
      */
     public void showGoodBye() {
-        say("Good bye. Hope to see you again soon!");
+        say("Good bye. Hope to see you again soon :)");
     }
 
     /**

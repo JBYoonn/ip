@@ -15,7 +15,7 @@ public class DeadlineCommand extends Command {
         Task t = Parser.parseDeadline(input);
 
         if (!tasks.addIfAbsent(t)) {
-            ui.say("This task is already present in the list.");
+            ui.say("Calm down. This task is already in your tasklist.");
             return false;
         }
 
