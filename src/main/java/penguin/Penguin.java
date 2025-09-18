@@ -57,6 +57,10 @@ public class Penguin {
         }
     }
 
+    public String getResponse(String input) {
+        return "Penguin heard: " + input;
+    }
+
     public static void main(String[] args) {
         new Penguin("data", "penguin.txt").run();
     }
