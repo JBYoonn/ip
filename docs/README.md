@@ -9,7 +9,7 @@
 
 All you need to do is,
 
-1. download the latest JAR from [here](https://github.com/JBYoonn/ip/releases/tag/A-Jar).
+1. download the latest JAR from [here](https://github.com/JBYoonn/ip/releases/tag/A-UserGuide).
 2. open a terminal in the download folder.
 3. run it with `java -jar penguin.jar`.
 4. start adding tasks with `todo`, `deadline` and `event` 😄
