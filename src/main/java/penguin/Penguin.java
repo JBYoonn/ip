@@ -1,9 +1,13 @@
 package penguin;
 
 import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
+import javafx.animation.PauseTransition;
+import javafx.application.Platform;
+import javafx.util.Duration;
 
 /**
  * Main entry point of the application.
@@ -33,31 +37,28 @@ public class Penguin {
         this.taskList = new TaskList(loaded);
     }
 
-    /**
-     * Starts the interaction between user and chatbot until the user exits.
-     */
-    public void run() {
-        ui.showGreeting(NAME);
+    public String getResponse(String input) {
+        boolean exit = false;
 
-        try (Scanner scanner = new Scanner(System.in)) {
-            while (true) {
-                String userInput = scanner.nextLine().trim();
+        try {
+            // try to parse user input and execute the command respectively
+            Command command = Parser.parse(input);
+            exit = command.execute(taskList, ui, storage);
 
-                try {
-                    Command command = Parser.parse(userInput);
-                    boolean exit = command.execute(taskList, ui, storage);
-
-                    if (exit) {
-                        break;
-                    }
-                } catch (PenguinException e) {
-                    ui.showError(e.getMessage());
-                }
+            if (exit) {
+                // wait for 1.5s before closing
+                PauseTransition delay = new PauseTransition(Duration.seconds(1.5));
+                delay.setOnFinished(event -> Platform.exit());
+                delay.play();
             }
+        } catch (PenguinException e) {
+            ui.showError(e.getMessage());
         }
+        return ui.flush();
     }
 
-    public static void main(String[] args) {
-        new Penguin("data", "penguin.txt").run();
+    public String getGreeting() {
+        ui.showGreeting(NAME);
+        return ui.flush();
     }
 }
