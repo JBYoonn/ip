@@ -14,12 +14,12 @@ public class TodoCommand extends Command {
     public boolean execute(TaskList tasks, Ui ui, Storage storage) throws PenguinException {
         Task t = Parser.parseTodo(input);
 
-        if (tasks.isDuplicate(t)) {
+        // AI assistance: Chat-GPT improved duplicate handling
+        if (!tasks.addIfAbsent(t)) {
             ui.say("This task is already present in the list.");
             return false;
         }
 
-        tasks.add(t);
         ui.showAddedTask(t, tasks.size());
 
         try {

@@ -1,5 +1,7 @@
 package penguin;
 
+import java.util.Objects;
+
 /**
  * Task with a description and a checkbox.
  */
@@ -55,6 +57,10 @@ public class Task {
         return "[" + getStatusIcon() + "] " + description;
     }
 
+    /**
+     * AI assistance used: Chat-GPT
+     * Check if the object is the same concrete class and have the same description
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -64,6 +70,16 @@ public class Task {
             return false;
         }
         Task other = (Task) obj;
-        return description.equals(other.description);
+        return getClass().equals(other.getClass())
+                && description.equalsIgnoreCase(other.description);
+    }
+
+    /**
+     * AI assistance used: Chat-GPT
+     * Hash taking into account task description
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(getClass(), description.toLowerCase());
     }
 }

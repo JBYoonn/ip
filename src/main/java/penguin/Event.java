@@ -1,5 +1,7 @@
 package penguin;
 
+import java.util.Objects;
+
 /**
  * A task with a specified duration.
  */
@@ -30,5 +32,27 @@ public class Event extends Task {
     @Override
     public String toString() {
         return "[E]" + super.toString() + " (from: " + from + " to: " + to + ")";
+    }
+
+    /**
+     * AI assistance used: Chat-GPT
+     * Check if the object is the same concrete class, description and from/to
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (!super.equals(o)) {
+            return false; // checks class + description
+        }
+        Event other = (Event) o;
+        return from.equalsIgnoreCase(other.from) && to.equalsIgnoreCase(other.to);
+    }
+
+    /**
+     * AI assistance used: Chat-GPT
+     * Hash taking into account task description, from/to
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), from.toLowerCase(), to.toLowerCase());
     }
 }

@@ -25,11 +25,16 @@ public class TaskList {
     }
 
     /**
-     * Adds a task to tasklist.
+     * Adds a task to tasklist if it is not a duplicate.
      * @param task Task to add to tasklist
      */
-    public void add(Task task) {
-        this.tasks.add(task);
+    public boolean addIfAbsent(Task task) {
+        assert task != null : "task must not be null";
+        if (isDuplicate(task)) {
+            return false;
+        }
+        tasks.add(task);
+        return true;
     }
 
     /**
@@ -70,7 +75,7 @@ public class TaskList {
      * @return {@code true} if index is valid; {@code false} otherwise
      */
     public boolean isValidIndex(int index) {
-        return index > 0 && index <= tasks.size();
+        return index >= 1 && index <= tasks.size();
     }
 
     /**
