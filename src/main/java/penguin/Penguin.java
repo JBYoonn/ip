@@ -31,6 +31,8 @@ public class Penguin {
         List<Task> loaded;
         try {
             loaded = storage.load();
+
+            assert loaded != null : "Loaded task list should never be null";
         } catch (IOException e) {
             loaded = new ArrayList<>();
         }
