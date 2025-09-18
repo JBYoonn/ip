@@ -31,7 +31,7 @@ public class Ui {
      * @param name Name of chatbot
      */
     public void showGreeting(String name) {
-        say("Hello! I'm " + name);
+        say("Quack! I'm " + name);
         say("What are we cooking today?");
     }
 
@@ -39,7 +39,7 @@ public class Ui {
      * Adds goodbye message to buffer.
      */
     public void showGoodBye() {
-        say("Good bye. Hope to see you again soon :)");
+        say("Good bye. Hope to see you again soon :) Bring some fish for me next time!");
     }
 
     /**
@@ -69,9 +69,9 @@ public class Ui {
     public void showTasks(TaskList taskList) {
         List<Task> tasks = taskList.getTasks();
 
-        say("Here are the task(s) in the list:");
+        say("Quackk...Here are the task(s) in the list:");
         if (tasks.isEmpty()) {
-            say("There is nothing here!");
+            say("There is nothing but quacks!");
         } else {
             for (int i = 0; i < tasks.size(); i++) {
                 say((i + 1) + "." + tasks.get(i));
@@ -85,7 +85,7 @@ public class Ui {
      * @param indices List of indices of tasks with matching keyword
      */
     public void showMatches(List<Task> matches, List<Integer> indices) {
-        say("Here are matching tasks in your list:");
+        say("Quack! Here are matching tasks in your list:");
         if (matches.isEmpty()) {
             say("There is nothing here!");
         } else {
@@ -101,7 +101,7 @@ public class Ui {
      * @param remaining Number of tasks left in tasklist
      */
     public void showRemovedTask(Task t, int remaining) {
-        say("Noted. I've removed this task:");
+        say("Quack. I've removed this task:");
         say("  " + t);
         say("Now you have " + remaining + " task(s) in the list!");
     }
@@ -130,6 +130,6 @@ public class Ui {
      * Adds bad ID message to buffer.
      */
     public void showBadId() {
-        say("Please provide a valid ID :(");
+        say("Quack!!! Please provide a valid ID :(");
     }
 }
