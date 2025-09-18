@@ -56,6 +56,7 @@ public class Ui {
      * @param size Number of task(s) in tasklist
      */
     public void showAddedTask(Task t, int size) {
+        assert t != null : "Task cannot be null";
         say("Got it. I've added this task:");
         say("  " + t);
         say("Now you have " + size + " task(s) in the list!");
@@ -110,6 +111,7 @@ public class Ui {
      * @param t Marked task
      */
     public void showMarked(Task t) {
+        assert t != null : "Task cannot be null";
         say("Nice! I've marked this task as done:");
         say(t.toString());
     }
@@ -119,6 +121,7 @@ public class Ui {
      * @param t Unmarked task
      */
     public void showUnmarked(Task t) {
+        assert t != null : "Task cannot be null";
         say("OK, I've marked this task as not done yet:");
         say(t.toString());
     }
