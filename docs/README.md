@@ -1,30 +1,31 @@
-# Duke User Guide
+# **Penguin**
+> Your friendly CLI task bot from Antarctica 🐧
 
-// Update the title above to match the actual product name
+**Penguin** is a text-based chatbot that helps you manage tasks right from the terminal. It supports _todos_, **deadlines**, and **events**. It’s simple, **reliable**, and ~~GUI-heavy~~ delightfully minimal.
 
-// Product screenshot goes here
+- text-based
+- easy to learn
+- _**SUPER**_ fast to use
 
-// Product intro goes here
+All you need to do is,
 
-## Adding deadlines
+1. download the latest JAR from [here](https://github.com/JBYoonn/ip/releases/tag/A-Jar).
+2. open a terminal in the download folder.
+3. run it with `java -jar penguin.jar`.
+4. start adding tasks with `todo`, `deadline` and `event` 😄
 
-// Describe the action and its outcome.
+And it is **FREE**!
 
-// Give examples of usage
+## **Features:**
 
-Example: `keyword (optional arguments)`
+- [x] Managing tasks (`todo`, `deadline`, `event`)
+- [x] Persistent storage via `Storage` (auto-creates save file)
+- [x] Case-insensitive search: `find <keyword>`
+- [x] Mark / unmark / delete tasks
 
-// A description of the expected outcome goes here
+## **Sample Usage**
 
-```
-expected output
-```
-
-## Feature ABC
-
-// Feature details
-
-
-## Feature XYZ
-
-// Feature details
+```java
+// Add a todo task and then search for it
+todo coding assignment
+find assignment
