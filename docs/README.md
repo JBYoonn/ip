@@ -29,3 +29,6 @@ And it is **FREE**!
 // Add a todo task and then search for it
 todo coding assignment
 find assignment
+```
+
+If you are still confused about what other commands are there, don't worry! Penguin will guide you in the application😄
