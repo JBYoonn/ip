@@ -23,7 +23,7 @@ public class MainWindow extends AnchorPane {
     private Penguin penguin;
 
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
-    private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
+    private Image penguinImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
 
     @FXML
     public void initialize() {
@@ -33,6 +33,11 @@ public class MainWindow extends AnchorPane {
     /** Injects the Penguin instance */
     public void setPenguin(Penguin p) {
         penguin = p;
+
+        String greeting = penguin.getGreeting();
+        dialogContainer.getChildren().add(
+                DialogBox.getPenguinDialog(greeting, penguinImage)
+        );
     }
 
     /**
@@ -45,7 +50,7 @@ public class MainWindow extends AnchorPane {
         String response = penguin.getResponse(input);
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, dukeImage)
+                DialogBox.getPenguinDialog(response, penguinImage)
         );
         userInput.clear();
     }

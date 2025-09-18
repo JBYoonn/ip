@@ -1,13 +1,13 @@
 package penguin;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.PrintStream;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
+import javafx.animation.PauseTransition;
 import javafx.application.Platform;
+import javafx.util.Duration;
 
 /**
  * Main entry point of the application.
@@ -37,67 +37,28 @@ public class Penguin {
         this.taskList = new TaskList(loaded);
     }
 
-    /**
-     * Starts the interaction between user and chatbot until the user exits.
-     */
-    public void run() {
-        ui.showGreeting(NAME);
-
-        try (Scanner scanner = new Scanner(System.in)) {
-            while (true) {
-                String userInput = scanner.nextLine().trim();
-
-                try {
-                    Command command = Parser.parse(userInput);
-                    boolean exit = command.execute(taskList, ui, storage);
-
-                    if (exit) {
-                        break;
-                    }
-                } catch (PenguinException e) {
-                    ui.showError(e.getMessage());
-                }
-            }
-        }
-    }
-
     public String getResponse(String input) {
-        // store original System.out
-        PrintStream originalOut = System.out;
-
-        // create BAOS to capture output
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PrintStream ps = new PrintStream(baos);
-
-        // redirect System.out to our PrintStream
-        System.setOut(ps);
-
-        String capturedOutput;
-
         boolean exit = false;
 
         try {
-            // regular operation
+            // try to parse user input and execute the command respectively
             Command command = Parser.parse(input);
             exit = command.execute(taskList, ui, storage);
 
-
+            if (exit) {
+                // wait for 1.5s before closing
+                PauseTransition delay = new PauseTransition(Duration.seconds(1.5));
+                delay.setOnFinished(event -> Platform.exit());
+                delay.play();
+            }
         } catch (PenguinException e) {
             ui.showError(e.getMessage());
-        } finally {
-            if (exit) {
-                Platform.exit();
-            }
-
-            // flush stream to ensure all content is written
-            ps.flush();
-
-            // restore the original System.out
-            System.setOut(originalOut);
-
-            // get captured output
-            capturedOutput = baos.toString();
         }
-        return capturedOutput;
+        return ui.flush();
+    }
+
+    public String getGreeting() {
+        ui.showGreeting(NAME);
+        return ui.flush();
     }
 }
