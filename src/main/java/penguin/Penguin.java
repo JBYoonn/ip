@@ -1,9 +1,13 @@
 package penguin;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import javafx.application.Platform;
 
 /**
  * Main entry point of the application.
@@ -58,6 +62,42 @@ public class Penguin {
     }
 
     public String getResponse(String input) {
-        return "Penguin heard: " + input;
+        // store original System.out
+        PrintStream originalOut = System.out;
+
+        // create BAOS to capture output
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(baos);
+
+        // redirect System.out to our PrintStream
+        System.setOut(ps);
+
+        String capturedOutput;
+
+        boolean exit = false;
+
+        try {
+            // regular operation
+            Command command = Parser.parse(input);
+            exit = command.execute(taskList, ui, storage);
+
+
+        } catch (PenguinException e) {
+            ui.showError(e.getMessage());
+        } finally {
+            if (exit) {
+                Platform.exit();
+            }
+
+            // flush stream to ensure all content is written
+            ps.flush();
+
+            // restore the original System.out
+            System.setOut(originalOut);
+
+            // get captured output
+            capturedOutput = baos.toString();
+        }
+        return capturedOutput;
     }
 }
