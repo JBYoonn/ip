@@ -13,6 +13,12 @@ public class DeadlineCommand extends Command {
     @Override
     public boolean execute(TaskList tasks, Ui ui, Storage storage) throws PenguinException {
         Task t = Parser.parseDeadline(input);
+
+        if (tasks.isDuplicate(t)) {
+            ui.say("This task is already present in the list.");
+            return false;
+        }
+
         tasks.add(t);
         ui.showAddedTask(t, tasks.size());
 

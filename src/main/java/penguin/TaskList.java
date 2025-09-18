@@ -72,4 +72,11 @@ public class TaskList {
     public boolean isValidIndex(int index) {
         return index > 0 && index <= tasks.size();
     }
+
+    /**
+     * Check if a task is already present in tasklist.
+     */
+    public boolean isDuplicate(Task task) {
+        return tasks.contains(task);
+    }
 }
