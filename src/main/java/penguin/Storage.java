@@ -161,40 +161,40 @@ public class Storage {
         }
     }
 
-    private Task decodeTodo(String[] line) throws CorruptedLineException {
-        String doneStr = line[1].trim();
+    private Task decodeTodo(String[] input) throws CorruptedLineException {
+        String doneStr = input[1].trim();
         Boolean done = isDone(doneStr);
-        if (line.length != 3) {
+        if (input.length != 3) {
             throw new CorruptedLineException("Todo needs 3 fields!");
         }
-        Todo t = new Todo(line[2]);
+        Todo t = new Todo(input[2]);
         if (done) {
             t.markAsDone();
         }
         return t;
     }
 
-    private Task decodeDeadline(String[] line) throws CorruptedLineException {
-        String doneStr = line[1].trim();
+    private Task decodeDeadline(String[] input) throws CorruptedLineException {
+        String doneStr = input[1].trim();
         Boolean done = isDone(doneStr);
-        if (line.length != 4) {
+        if (input.length != 4) {
             throw new CorruptedLineException("Deadline needs 4 fields!");
         }
-        LocalDate deadlineDate = LocalDate.parse(line[3]);
-        Deadline d = new Deadline(line[2], deadlineDate);
+        LocalDate deadlineDate = LocalDate.parse(input[3]);
+        Deadline d = new Deadline(input[2], deadlineDate);
         if (done) {
             d.markAsDone();
         }
         return d;
     }
 
-    private Task decodeEvent(String[] line) throws CorruptedLineException {
-        String doneStr = line[1].trim();
+    private Task decodeEvent(String[] input) throws CorruptedLineException {
+        String doneStr = input[1].trim();
         Boolean done = isDone(doneStr);
-        if (line.length != 5) {
+        if (input.length != 5) {
             throw new CorruptedLineException("Event needs 5 fields!");
         }
-        Event e = new Event(line[2], line[3], line[4]);
+        Event e = new Event(input[2], input[3], input[4]);
         if (done) {
             e.markAsDone();
         }
