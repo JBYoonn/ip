@@ -30,13 +30,13 @@ public class MainWindow extends AnchorPane {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
     }
 
-    /** Injects the Duke instance */
-    public void setDuke(Penguin p) {
+    /** Injects the Penguin instance */
+    public void setPenguin(Penguin p) {
         penguin = p;
     }
 
     /**
-     * Creates two dialog boxes, one echoing user input and the other containing Duke's reply and then appends them to
+     * Creates two dialog boxes, one echoing user input and the other containing Penguin's reply and then appends them to
      * the dialog container. Clears the user input after processing.
      */
     @FXML
