@@ -81,37 +81,17 @@ public class Storage {
     }
 
     private String encode(Task t) {
-        String done = t.isDone ? "1" : "0";
-
         if (t instanceof Todo todo) {
-            return String.join(
-                    " | ",
-                    "T",
-                    done,
-                    todo.getDescription()
-            );
+            return encodeTodo(todo);
         } else if (t instanceof Deadline d) {
-            return String.join(
-                    " | ",
-                    "D",
-                    done,
-                    d.getDescription(),
-                    d.getBy()
-            );
+            return encodeDeadline(d);
         } else if (t instanceof Event e) {
-            return String.join(
-                    " | ",
-                    "E",
-                    done,
-                    e.getDescription(),
-                    e.getFrom(),
-                    e.getTo()
-            );
+            return encodeEvent(e);
         } else {
             return String.join(
                     " | ",
                     "?",
-                    done,
+                    t.isDone ? "1" : "0",
                     t.toString()
             );
         }
@@ -124,52 +104,101 @@ public class Storage {
         }
 
         String type = p[0].trim();
-        String doneStr = p[1].trim();
-        boolean done;
-
-        if (doneStr.equals("1")) {
-            done = true;
-        } else if (doneStr.equals("0")) {
-            done = false;
-        } else {
-            throw new CorruptedLineException("done must be either 0 or 1");
-        }
 
         switch (type) {
         case "T" -> {
-            if (p.length != 3) {
-                throw new CorruptedLineException("Todo needs 3 fields!");
-            }
-            Todo t = new Todo(p[2]);
-            if (done) {
-                t.markAsDone();
-            }
-            return t;
+            return decodeTodo(p);
         }
         case "D" -> {
-            if (p.length != 4) {
-                throw new CorruptedLineException("Deadline needs 4 fields!");
-            }
-            LocalDate deadlineDate = LocalDate.parse(p[3]);
-            Deadline d = new Deadline(p[2], deadlineDate);
-            if (done) {
-                d.markAsDone();
-            }
-            return d;
+            return decodeDeadline(p);
         }
         case "E" -> {
-            if (p.length != 5) {
-                throw new CorruptedLineException("Event needs 5 fields!");
-            }
-            Event e = new Event(p[2], p[3], p[4]);
-            if (done) {
-                e.markAsDone();
-            }
-            return e;
+            return decodeEvent(p);
         }
         default -> {
             throw new CorruptedLineException("unknown type: " + type);
         }
         }
     }
+
+    private String encodeTodo(Todo t) {
+        return String.join(
+                " | ",
+                "T",
+                t.isDone ? "1" : "0",
+                t.getDescription()
+        );
+    }
+
+    private String encodeDeadline(Deadline d) {
+        return String.join(
+                " | ",
+                "D",
+                d.isDone ? "1" : "0",
+                d.getDescription(),
+                d.getBy()
+        );
+    }
+
+    private String encodeEvent(Event e) {
+        return String.join(
+                " | ",
+                "E",
+                e.isDone ? "1" : "0",
+                e.getDescription(),
+                e.getFrom(),
+                e.getTo()
+        );
+    }
+
+    private Boolean isDone(String doneStr) throws CorruptedLineException {
+        if (doneStr.equals("1")) {
+            return true;
+        } else if (doneStr.equals("0")) {
+            return false;
+        } else {
+            throw new CorruptedLineException("done must be either 0 or 1");
+        }
+    }
+
+    private Task decodeTodo(String[] line) throws CorruptedLineException {
+        String doneStr = line[1].trim();
+        Boolean done = isDone(doneStr);
+        if (line.length != 3) {
+            throw new CorruptedLineException("Todo needs 3 fields!");
+        }
+        Todo t = new Todo(line[2]);
+        if (done) {
+            t.markAsDone();
+        }
+        return t;
+    }
+
+    private Task decodeDeadline(String[] line) throws CorruptedLineException {
+        String doneStr = line[1].trim();
+        Boolean done = isDone(doneStr);
+        if (line.length != 4) {
+            throw new CorruptedLineException("Deadline needs 4 fields!");
+        }
+        LocalDate deadlineDate = LocalDate.parse(line[3]);
+        Deadline d = new Deadline(line[2], deadlineDate);
+        if (done) {
+            d.markAsDone();
+        }
+        return d;
+    }
+
+    private Task decodeEvent(String[] line) throws CorruptedLineException {
+        String doneStr = line[1].trim();
+        Boolean done = isDone(doneStr);
+        if (line.length != 5) {
+            throw new CorruptedLineException("Event needs 5 fields!");
+        }
+        Event e = new Event(line[2], line[3], line[4]);
+        if (done) {
+            e.markAsDone();
+        }
+        return e;
+    }
+
 }

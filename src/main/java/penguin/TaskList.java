@@ -25,7 +25,7 @@ public class TaskList {
     }
 
     /**
-     * Add a task to tasklist.
+     * Adds a task to tasklist.
      * @param task Task to add to tasklist
      */
     public void add(Task task) {
@@ -33,7 +33,7 @@ public class TaskList {
     }
 
     /**
-     * Remove a task at a specified index in tasklist.
+     * Removes a task at a specified index in tasklist.
      * @param index Index of task to remove from tasklist
      * @return Task removed
      */
@@ -50,7 +50,7 @@ public class TaskList {
     }
 
     /**
-     * Get a task at a specified index of tasklist.
+     * Returns a task at a specified index of tasklist.
      * @return Task at a specified index
      */
     public Task get(int index) {
